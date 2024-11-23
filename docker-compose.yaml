@@ -1,0 +1,35 @@
+services:
+  django: &django
+    build:
+      context: .
+      dockerfile: ./images/local/django/django.Dockerfile
+    image: budget_app_poc_local_django
+    container_name: budget_app_poc_local_django
+    depends_on:
+      - postgres
+      - redis
+    volumes:
+      - ./api:/app/api:z
+    env_file:
+      - ./api/.env
+    ports:
+      - 8000:8000
+    command: /start
+
+  postgres:
+    image: docker.io/postgres:16
+    container_name: budget_app_poc_local_postgres
+    volumes:
+      - budget_app_poc_local_postgres_data:/var/lib/postgresql/data
+    env_file:
+      - ./api/.env
+
+  redis:
+    image: docker.io/redis:6
+    container_name: budget_app_poc_local_redis
+    volumes:
+      - budget_app_poc_local_redis_data:/data
+
+volumes:
+  budget_app_poc_local_postgres_data: {}
+  budget_app_poc_local_redis_data: {}
