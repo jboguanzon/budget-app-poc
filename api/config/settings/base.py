@@ -344,13 +344,27 @@ ACCOUNT_EMAIL_VERIFICATION = "mandatory"
 # https://docs.allauth.org/en/latest/account/configuration.html
 ACCOUNT_ADAPTER = "apps.authentication.adapters.AccountAdapter"
 
+# dj-rest-auth
+# -------------------------------------------------------------------------------
+REST_AUTH = {
+    "USE_JWT": True,
+    "JWT_AUTH_COOKIE": "budget-app-poc-auth",
+    "JWT_AUTH_REFRESH_COOKIE": "budget-app-poc-refresh",
+    "JWT_AUTH_SECURE": env.bool("DJANGO_JWT_AUTH_SECURE", default=True),
+    "JWT_AUTH_SAMESITE": env("DJANGO_JWT_AUTH_SAMESITE", default="Strict"),
+    "JWT_AUTH_COOKIE_DOMAIN": env("DJANGO_JWT_AUTH_COOKIE_DOMAIN", default="localhost"),
+    "LOGIN_SERIALIZER": "apps.authentication.serializers.LoginSerializer",
+    "REGISTER_SERIALIZER": "apps.authentication.serializers.RegisterSerializer",
+    "USER_DETAILS_SERIALIZER": "apps.users.serializers.UserSerializer",
+    "JWT_AUTH_RETURN_EXPIRATION": True,
+}
+
 # django-rest-framework
 # -------------------------------------------------------------------------------
 # django-rest-framework - https://www.django-rest-framework.org/api-guide/settings/
 REST_FRAMEWORK = {
     "DEFAULT_AUTHENTICATION_CLASSES": (
-        "rest_framework.authentication.SessionAuthentication",
-        "rest_framework.authentication.TokenAuthentication",
+        "dj_rest_auth.jwt_auth.JWTCookieAuthentication",
     ),
     "DEFAULT_PERMISSION_CLASSES": ("rest_framework.permissions.IsAuthenticated",),
     "DEFAULT_SCHEMA_CLASS": "drf_spectacular.openapi.AutoSchema",
@@ -368,3 +382,8 @@ SPECTACULAR_SETTINGS = {
     "SERVE_PERMISSIONS": ["rest_framework.permissions.IsAdminUser"],
     "SCHEMA_PATH_PREFIX": "/api/",
 }
+
+WEB_APP_BASE_URL = env("WEB_APP_BASE_URL", default="http://localhost:3000")
+WEB_APP_VERIFY_EMAIL_PATH = env(
+    "WEB_APP_VERIFY_EMAIL_PATH", default="auth/verify-email"
+)
