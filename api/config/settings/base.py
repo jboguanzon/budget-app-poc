@@ -104,11 +104,12 @@ THIRD_PARTY_APPS = [
     "whitenoise.runserver_nostatic",
     "django_celery_beat",
 ]
-
 LOCAL_APPS = [
     "apps.authentication",
+    "apps.categories",
     "apps.users",
 ]
+
 # https://docs.djangoproject.com/en/dev/ref/settings/#installed-apps
 INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS
 
