@@ -102,6 +102,7 @@ THIRD_PARTY_APPS = [
     "dj_rest_auth.registration",
     "django_extensions",
     "whitenoise.runserver_nostatic",
+    "django_celery_beat",
 ]
 
 LOCAL_APPS = [
