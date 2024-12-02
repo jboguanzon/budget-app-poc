@@ -10,7 +10,7 @@ class CategoryInline(admin.TabularInline):
 
 
 class CategoryAdmin(admin.ModelAdmin):
-    list_display = ["name", "parent"]
+    list_display = ["name", "parent", "user"]
     inlines = [CategoryInline]
 
 
