@@ -105,6 +105,7 @@ THIRD_PARTY_APPS = [
     "django_celery_beat",
 ]
 LOCAL_APPS = [
+    "apps.accounts",
     "apps.authentication",
     "apps.categories",
     "apps.payees",
