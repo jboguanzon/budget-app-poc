@@ -91,6 +91,7 @@ DJANGO_APPS = [
     "django.contrib.admin",
     "django.forms",
 ]
+
 THIRD_PARTY_APPS = [
     "corsheaders",
     "rest_framework",
@@ -103,12 +104,15 @@ THIRD_PARTY_APPS = [
     "django_extensions",
     "whitenoise.runserver_nostatic",
     "django_celery_beat",
+    "djmoney",
 ]
+
 LOCAL_APPS = [
     "apps.accounts",
     "apps.authentication",
     "apps.categories",
     "apps.payees",
+    "apps.transactions",
     "apps.users",
 ]
 
