@@ -5,6 +5,8 @@ from django_extensions.db.models import TimeStampedModel
 
 
 class Category(TimeStampedModel):
+    """Timestamped model to represent categories."""
+
     name = models.CharField(
         verbose_name=_("category name"), max_length=64, blank=False, null=False
     )

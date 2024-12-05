@@ -6,6 +6,8 @@ from .models import User
 
 
 class UserAdminChangeForm(forms.UserChangeForm):
+    """Form for editing User details in the Admin Area."""
+
     class Meta(forms.UserChangeForm.Meta):  # type: ignore[name-defined]
         model = User
         field_classes = {"email": EmailField}
@@ -14,6 +16,7 @@ class UserAdminChangeForm(forms.UserChangeForm):
 class UserAdminCreationForm(forms.UserCreationForm):
     """
     Form for User Creation in the Admin Area.
+
     To change user signup, see UserSignupForm and UserSocialSignupForm.
     """
 

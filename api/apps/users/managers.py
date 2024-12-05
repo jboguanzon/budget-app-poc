@@ -3,11 +3,11 @@ from django.contrib.auth.models import UserManager as DjangoUserManager
 
 
 class UserManager(DjangoUserManager["User"]):
+    """Custom manager for the User model."""
+
     @classmethod
     def normalize_email(cls, email):
-        """
-        Normalize the email address by lowercasing it entirely.
-        """
+        """Normalize the email address by lowercasing it entirely."""
         email = email or ""
         try:
             email_name, domain_part = email.strip().rsplit("@", 1)
@@ -29,11 +29,13 @@ class UserManager(DjangoUserManager["User"]):
         return user
 
     def create_user(self, email, password, **extra_fields):
+        """Create a user with the given `email`, `password`, and `extra_fields`."""
         extra_fields.setdefault("is_staff", False)
         extra_fields.setdefault("is_superuser", False)
         return self._create_user(email, password, **extra_fields)
 
     def create_superuser(self, email: str, password: str | None = None, **extra_fields):  # type: ignore[override]
+        """Create a user where is_staff and is_superuser must be in `extra_fields` and set to True."""
         extra_fields.setdefault("is_staff", True)
         extra_fields.setdefault("is_superuser", True)
 
