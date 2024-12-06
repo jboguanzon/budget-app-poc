@@ -5,6 +5,8 @@ from django_extensions.db.models import TimeStampedModel
 
 
 class Payee(TimeStampedModel):
+    """Timestamped model to represent payees."""
+
     name = models.CharField(
         verbose_name=_("payee"), max_length=64, blank=False, null=False
     )

@@ -8,6 +8,8 @@ from .models import User
 
 @admin.register(User)
 class UserAdmin(DjangoUserAdmin):
+    """Custom admin class for the User model."""
+
     form = UserAdminChangeForm
     add_form = UserAdminCreationForm
     fieldsets = (

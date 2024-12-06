@@ -7,7 +7,6 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     initial = True
 
     dependencies = [
@@ -16,17 +15,42 @@ class Migration(migrations.Migration):
 
     operations = [
         migrations.CreateModel(
-            name='Payee',
+            name="Payee",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('created', django_extensions.db.fields.CreationDateTimeField(auto_now_add=True, verbose_name='created')),
-                ('modified', django_extensions.db.fields.ModificationDateTimeField(auto_now=True, verbose_name='modified')),
-                ('name', models.CharField(max_length=64, verbose_name='payee')),
-                ('user', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to=settings.AUTH_USER_MODEL, verbose_name='payee owner')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                (
+                    "created",
+                    django_extensions.db.fields.CreationDateTimeField(
+                        auto_now_add=True, verbose_name="created"
+                    ),
+                ),
+                (
+                    "modified",
+                    django_extensions.db.fields.ModificationDateTimeField(
+                        auto_now=True, verbose_name="modified"
+                    ),
+                ),
+                ("name", models.CharField(max_length=64, verbose_name="payee")),
+                (
+                    "user",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        to=settings.AUTH_USER_MODEL,
+                        verbose_name="payee owner",
+                    ),
+                ),
             ],
             options={
-                'verbose_name': 'payee',
-                'verbose_name_plural': 'payees',
+                "verbose_name": "payee",
+                "verbose_name_plural": "payees",
             },
         ),
     ]
