@@ -3,5 +3,9 @@
     {
       "mode": "auto"
     }
-  ]
+  ],
+  "editor.formatOnSave": true,
+  "ruff.lint.run": "onSave",
+  "files.trimTrailingWhitespaceInRegexAndStrings": true,
+  "autoDocstring.docstringFormat": "pep257"
 }
