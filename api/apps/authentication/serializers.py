@@ -13,16 +13,18 @@ User = get_user_model()
 
 
 class LoginSerializer(DJRestAuthLoginSerializer):
+    """Serializer for user log-in."""
+
     username = None
 
 
 class RegisterSerializer(DJRestAuthRegisterSerializer):
+    """Serializer for user registration."""
+
     username = None
 
     def validate_email(self, email):
-        """
-        Check if the email already exists in the database and if the user is verified.
-        """
+        """Check if the email already exists in the database and if the user is verified."""
         email = get_adapter().clean_email(email)
         if allauth_account_settings.UNIQUE_EMAIL:
             if email and (

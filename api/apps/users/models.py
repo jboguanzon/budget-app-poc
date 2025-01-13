@@ -8,6 +8,8 @@ from .managers import UserManager
 
 
 class User(AbstractUser):
+    """Custom user model."""
+
     email = models.EmailField(_("email address"), unique=True)
     username = None
 

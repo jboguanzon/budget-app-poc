@@ -7,11 +7,15 @@ from djmoney.settings import CURRENCY_CHOICES
 
 
 class Account(TimeStampedModel):
+    """Timestamped model to represent accounts."""
+
     name = models.CharField(
         verbose_name=_("account name"), max_length=64, blank=False, null=False
     )
 
     class AccountType(models.TextChoices):
+        """Choices for the account type."""
+
         CREDIT = "CREDIT", _("Credit")
         DEBIT = "DEBIT", _("Debit")
 
